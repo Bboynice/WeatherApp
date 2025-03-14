@@ -1,3 +1,118 @@
 @import "tailwindcss";
-body {
+
+body{
+    font-family: 'ClashDisplay-Light', sans-serif;
 }
+@font-face {
+    font-family: 'Chillax-Extralight';
+    src: url('./assets/fonts/Chillax-Extralight.woff2') format('woff2'),
+         url('./assets/fonts/Chillax-Extralight.woff') format('woff');
+    font-weight: 200;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Chillax-Light';
+    src: url('./assets/fonts/Chillax-Light.woff2') format('woff2'),
+         url('./assets/fonts/Chillax-Light.woff') format('woff');
+    font-weight: 300;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Chillax-Regular';
+    src: url('./assets/fonts/Chillax-Regular.woff2') format('woff2'),
+         url('./assets/fonts/Chillax-Regular.woff') format('woff');
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Chillax-Medium';
+    src: url('./assets/fonts/Chillax-Medium.woff2') format('woff2'),
+         url('./assets/fonts/Chillax-Medium.woff') format('woff');    font-weight: 500;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Chillax-Semibold';
+    src: url('./assets/fonts/Chillax-Semibold.woff2') format('woff2'),
+         url('./assets/fonts/Chillax-Semibold.woff') format('woff');
+    font-weight: 600;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Chillax-Bold';
+    src: url('./assets/fonts/Chillax-Bold.woff2') format('woff2'),
+         url('./assets/fonts/Chillax-Bold.woff') format('woff');    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Chillax-Variable';
+    src: url('./assets/fonts/Chillax-Variable.woff2') format('woff2'),
+         url('./assets/fonts/Chillax-Variable.woff') format('woff');
+    font-weight: 200 700;
+    font-display: swap;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'ClashDisplay-Extralight';
+    src: url('./assets/fonts/ClashDisplay-Extralight.woff2') format('woff2'),
+         url('./assets/fonts/ClashDisplay-Extralight.woff') format('woff');
+    font-weight: 200;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'ClashDisplay-Light';
+    src: url('./assets/fonts/ClashDisplay-Light.woff2') format('woff2'),
+         url('./assets/fonts/ClashDisplay-Light.woff') format('woff');
+    font-weight: 300;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'ClashDisplay-Regular';
+    src: url('./assets/fonts/ClashDisplay-Regular.woff2') format('woff2'),
+         url('./assets/fonts/ClashDisplay-Regular.woff') format('woff');
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'ClashDisplay-Medium';
+    src: url('./assets/fonts/ClashDisplay-Medium.woff2') format('woff2'),
+         url('./assets/fonts/ClashDisplay-Medium.woff') format('woff');
+    font-weight: 500;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'ClashDisplay-Semibold';
+    src: url('./assets/fonts/ClashDisplay-Semibold.woff2') format('woff2'),
+         url('./assets/fonts/ClashDisplay-Semibold.woff') format('woff');
+    font-weight: 600;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'ClashDisplay-Bold';
+    src: url('./assets/fonts/ClashDisplay-Bold.woff2') format('woff2'),
+         url('./assets/fonts/ClashDisplay-Bold.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'ClashDisplay-Variable';
+    src: url('./assets/fonts/ClashDisplay-Variable.woff2') format('woff2'),
+         url('./assets/fonts/ClashDisplay-Variable.woff') format('woff');
+    font-weight: 200 700;
+    font-display: swap;
+    font-style: normal;
+  }
+  
+  
