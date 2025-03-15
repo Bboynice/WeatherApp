@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import logoInsideDark from '../assets/logo/logo-inside-dark.png';
 import logoOutsideDark from '../assets/logo/logo-outside-dark.png';
-const Header = () => {
+const Header = ({ isDaytime }) => {
   const headerRef = useRef(null);
   const textRef = useRef(null);
   const logoRef = useRef(null);
@@ -42,11 +42,14 @@ const Header = () => {
       scale: 0.8,
     });
   }, []);
+
+  const headerColor = isDaytime ? 'bg-white' : 'bg-black';
+  const textColor = isDaytime ? 'text-black' : 'text-white';
   return (
     <header>
-      <div ref={headerRef} className="bg-blue-800 bg-contain bg-center bg-no-repeat flex items-center justify-center">
-        <div className="bg-white p-8 w-1/4 h-1/8 rounded-md overflow-hidden flex items-center justify-center">
-          <h1 className="text-4xl font-bold text-center" ref={textRef}>Weather.io</h1>
+      <div ref={headerRef} className={`bg-contain bg-center bg-no-repeat flex items-center justify-center bg-blue-800`}>
+        <div className={`${headerColor} p-8 w-1/4 h-1/8 rounded-md overflow-hidden flex items-center justify-center`}>
+          <h1 className={`text-4xl font-bold text-center ${textColor}`} ref={textRef}>Weather.io</h1>
         </div>
       </div>
     </header>

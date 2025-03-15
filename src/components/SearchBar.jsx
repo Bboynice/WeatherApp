@@ -42,7 +42,7 @@ const SearchBar = ({ onSearch }) => {
                 onKeyDown={handleKeyDown}
                 className='bg-gray-800 text-white p-2 rounded-md w-2/8 h-1/2 rounded-l-[25px]'
             />
-            <button onClick={handleSearch} className='bg-blue-800 text-white p-2 rounded-md w-1/8 h-1/2 rounded-r-[25px]'>Search</button>
+            <button onClick={handleSearch} className='bg-blue-800 text-white p-2 rounded-md w-1/8 h-1/2 rounded-r-[25px] cursor-pointer select-none'>Search</button>
             </div>
         </div>
     )
