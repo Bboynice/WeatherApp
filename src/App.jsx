@@ -15,7 +15,7 @@ function App() {
   const checkDayTime = (weatherData) => {
     if (!weatherData) return true;
     
-    const currentTime = Math.floor(Date.now() / 1000); // Current time in Unix timestamp
+    const currentTime = Math.floor(Date.now() / 1000); 
     const sunrise = weatherData.sys.sunrise;
     const sunset = weatherData.sys.sunset;
     
@@ -50,11 +50,11 @@ function App() {
   return (
     <>
       <Header isDaytime={isDaytime} />
-      <div className='flex items-center justify-center h-screen w-screen' style={{ backgroundColor: isDaytime ? 'white' : 'black' }}>
-        <div className='flex flex-col items-center rounded-[40px] bg-center bg-no-repeat bg-cover h-[96vh] w-[98vw]' style={{ backgroundImage: `url(${backgroundImage})` }}>
+      <div className='flex items-center justify-center h-screen w-screen animate' style={{ backgroundColor: isDaytime ? 'white' : 'black' }}>
+        <div className='flex flex-col items-center rounded-[40px] bg-center bg-no-repeat bg-cover h-[96vh] w-[98vw] animate' style={{ backgroundImage: `url(${backgroundImage})` }}>
           <SearchBar onSearch={handleSearch} />
           {error && 
-          <p className='error bg-white/20 backdrop-blur-sm shadow-lg shadow-black/10 rounded-[25px] text-center w-[52%] h-1/5 flex flex-col items-center justify-center mb-4 align-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/8 text-xl'>{error}</p>}
+          <p className='error bg-white/20 backdrop-blur-sm shadow-lg shadow-black/10 rounded-[25px] text-center w-[52%] h-1/5 flex flex-col items-center justify-center mb-4 align-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/8 text-xl animate'>{error}</p>}
           {weather && (
               <WeatherCard weather={weather} isDaytime={isDaytime} />
           )}

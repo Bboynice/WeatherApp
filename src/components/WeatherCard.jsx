@@ -13,10 +13,12 @@ import dark_clear_sky from '../assets/icons/dark-clearsky.svg'
 import dark_few_clouds from '../assets/icons/dark-fewclouds.svg'
 import dark_overcast_clouds from '../assets/icons/dark-overcastclouds.svg'
 import dark_scattered_clouds from '../assets/icons/dark-scatteredclouds.svg'
+import dark_light_snow from '../assets/icons/dark-snow.svg'
+import bright_light_snow from '../assets/icons/bright-snow.svg'
+import './WeatherCard.css'
 
 
-
-const WeatherCard = ({ weather, isDarkMode, animateText, isDaytime }) => {
+const WeatherCard = ({ weather, isDarkMode, Text, isDaytime }) => {
     const cardRef = useRef(null);
     const textRefs = useRef([]);
     const iconRef = useRef(null);
@@ -53,7 +55,7 @@ const WeatherCard = ({ weather, isDarkMode, animateText, isDaytime }) => {
             ease: 'power2.inOut',
         });
         
-    }, [animateText]);
+    }, [Text]);
 
     const formattedDate = new Date().toLocaleDateString("en-GB", {
         weekday: "long", // "Sunday"
@@ -73,41 +75,53 @@ const WeatherCard = ({ weather, isDarkMode, animateText, isDaytime }) => {
         "bright_few_clouds": bright_few_clouds,
         "bright_overcast_clouds": bright_overcast_clouds,
         "bright_scattered_clouds": bright_scattered_clouds,
+        "dark_light_snow": dark_light_snow,
+        "bright_light_snow": bright_light_snow,
+        
     };
 
 
 
-      const sunrise = new Date(weather.sys.sunrise * 1000).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false });
-      const sunset = new Date(weather.sys.sunset * 1000).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false });
+      const offsetInSeconds = weather.timezone; 
+      const offsetInHours = offsetInSeconds / 3600; 
+      const timezoneString = `GMT${offsetInHours >= 0 ? '+' : ''}${offsetInHours}`;
+
+      const sunrise = new Date((weather.sys.sunrise + weather.timezone) * 1000)
+      .toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false }) + ` (By local time)`;
+    
+    const sunset = new Date((weather.sys.sunset + weather.timezone) * 1000)
+      .toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false }) + ` (By local time)`;
+
 
     const textColor = isDaytime ? 'black' : 'white';
     const iconColor = isDaytime ? 'dark' : 'bright';
 
     const weatherKey   = iconColor + "_" + weather.weather[0].description.toLowerCase().replace(" ", "_");
     const weatherIcon = weatherIcons[weatherKey] || "dark_clear_sky";
+    
     return (
-      <div className="text-center w-1/1 flex flex-row items-center justify-center h-4/5 m-4" style={{ color: textColor }}>
+      <div className="text-center w-1/1 flex flex-row items-center justify-center h-4/5 m-4 " style={{ color: textColor}}>
         <div className="m-4 rounded-[25px] text-center w-1/1 h-1/1 flex flex-row items-center justify-center" ref={cardRef}>
             <div className=' rounded-[25px] text-center w-3/10 h-1/1 flex flex-col items-end justify-center gap-4'>
               <div className='bg-white/20 backdrop-blur-sm rounded-[25px] text-center w-[100%] h-1/3 flex flex-col items-start justify-center mt-4'>
-              <h3 ref={(el) => (textRefs.current[0] = el)} className="text-2xl font-bold ml-10 mb-8">{weather.name}, {weather.sys.country}</h3>
-              <h1 ref={(el) => (textRefs.current[1] = el)} className="text-lg ml-10">{weather.weather[0].description}</h1>
-              <h1 ref={(el) => (textRefs.current[2] = el)} className="text-4xl font-bold ml-10">{Math.round(weather.main.temp)}°C</h1>
+              <h3 ref={(el) => (textRefs.current[0] = el)} className="text-2xl font-bold ml-10 mb-8 ">{weather.name}, {weather.sys.country}</h3>
+              <h1 ref={(el) => (textRefs.current[1] = el)} className="text-lg ml-10 ">{weather.weather[0].description}</h1>
+              <h1 ref={(el) => (textRefs.current[2] = el)} className="text-4xl font-bold ml-10 ">{Math.round(weather.main.temp)}°C</h1>
             
 
 
               </div>
               <div className='bg-white/20 backdrop-blur-sm  rounded-[25px] text-center w-[100%] h-1/3 flex flex-col items-start justify-center'>
-              <div ref={(el) => (textRefs.current[5] = el)} className="text-lg ml-10 font-bold text-3xl">Feels like: {Math.round(weather.main.feels_like)}°C</div>
-              <p className="ml-10" ref={(el) => (textRefs.current[7] = el)}>Wind Speed: {weather.wind.speed.toFixed(1)} m/s</p>
-              <p ref={(el) => (textRefs.current[9] = el)} className="text-lg ml-10">Min: {Math.round(weather.main.temp_min)}°C Max: {Math.round(weather.main.temp_max)}°C</p>
+              <div ref={(el) => (textRefs.current[5] = el)} className="text-lg ml-10 font-bold text-3xl ">Feels like: {Math.round(weather.main.feels_like)}°C</div>
+              <p className="ml-10 " ref={(el) => (textRefs.current[7] = el)}>Wind Speed: {weather.wind.speed.toFixed(1)} m/s</p>
+              <p ref={(el) => (textRefs.current[9] = el)} className="text-lg ml-10 ">Min: {Math.round(weather.main.temp_min)}°C Max: {Math.round(weather.main.temp_max)}°C</p>
               </div>
               
               <div className=' bg-white/30 backdrop-blur-sm   rounded-[25px] text-center w-[100%] h-1/3 flex flex-col items-start justify-center mb-4'>
   
-                  <p className="ml-10" ref={(el) => (textRefs.current[11] = el)}>Cloud Coverage: {weather.clouds.all}%</p>
-                  <p className="ml-10" ref={(el) => (textRefs.current[12] = el)}>Humidity: {weather.main.humidity}%</p>
-                  <p ref={(el) => (textRefs.current[13] = el)} className="text-l ml-10">Pressure: {weather.main.pressure}</p>
+                  <p className="ml-10 " ref={(el) => (textRefs.current[11] = el)}>Cloud Coverage: {weather.clouds.all}%</p>
+                  <p className="ml-10 " ref={(el) => (textRefs.current[12] = el)}>Humidity: {weather.main.humidity}%</p>
+                  <p ref={(el) => (textRefs.current[13] = el)} className="text-l ml-10 ">Pressure: {weather.main.pressure}</p>
                   
                   
                 
@@ -117,16 +131,16 @@ const WeatherCard = ({ weather, isDarkMode, animateText, isDaytime }) => {
             </div>
             <div className='  rounded-[25px] text-center w-7/10 h-1/1 flex flex-row items-center justify-center gap-4'>
                 <div className='  bg-white/20 backdrop-blur-sm  rounded-[25px] text-center w-2/5 h-[95%] flex flex-col items-center justify-center ml-4'>
-                  <div className='w-[60%] h-[60%] rounded-[25px] flex items-center justify-center'>
-                    <img ref={iconRef} src={weatherIcon} alt="Weather Icon" className='w-full h-full' />
+                  <div className='w-[60%] h-[60%] rounded-[25px] flex items-center justify-center select-none '>
+                    <img ref={iconRef} src={weatherIcon} alt="Weather Icon" className='w-full h-full ' />
                   </div>
                 </div>
                 <div className='bg-white/20 backdrop-blur-sm   rounded-[25px] text-center w-3/5 h-[95%] flex flex-col items-center justify-center'>
                   <div className='flex flex-col items-start justify-center gap-8 h-[90%] w-[90%] rounded-[25px]'>
-                    <div ref={(el) => (textRefs.current[4] = el)} className="text-3xl ml-10 font-bold">Date: {formattedDate.replace(",", " |")}</div>
-                    <p ref={(el) => (textRefs.current[6] = el)} className="text-xl ml-10">Sunrise: {sunrise}</p>
-                    <p ref={(el) => (textRefs.current[8] = el)} className="text-xl ml-10">Sunset: {sunset}</p>
-                    <p ref={(el) => (textRefs.current[10] = el)} className="text-xl ml-10">Timezone: {weather.timezone}</p>
+                    <div ref={(el) => (textRefs.current[4] = el)} className="text-3xl ml-10 font-bold ">Date: {formattedDate.replace(",", " |")}</div>
+                    <p ref={(el) => (textRefs.current[6] = el)} className="text-xl ml-10 ">Sunrise: {sunrise}</p>
+                    <p ref={(el) => (textRefs.current[8] = el)} className="text-xl ml-10 ">Sunset: {sunset}</p>
+                    <p ref={(el) => (textRefs.current[10] = el)} className="text-xl ml-10 ">Timezone: {timezoneString}</p>
                   </div>
                 </div>
             </div>
