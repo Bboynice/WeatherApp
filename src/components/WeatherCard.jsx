@@ -137,7 +137,7 @@ const WeatherCard = ({ weather, isDarkMode, Text, isDaytime }) => {
                 </div>
                 <div className='bg-white/20 backdrop-blur-sm   rounded-[25px] text-center w-3/5 h-[95%] flex flex-col items-center justify-center'>
                   <div className='flex flex-col items-start justify-center gap-8 h-[90%] w-[90%] rounded-[25px]'>
-                    <div ref={(el) => (textRefs.current[4] = el)} className="text-3xl ml-10 font-bold ">Date: {formattedDate.replace(",", " |")}</div>
+                    <p ref={(el) => (textRefs.current[4] = el)} className="text-3xl ml-10 font-bold ">Date: {formattedDate.replace(",", " |")}</p>
                     <p ref={(el) => (textRefs.current[6] = el)} className="text-xl ml-10 ">Sunrise: {sunrise}</p>
                     <p ref={(el) => (textRefs.current[8] = el)} className="text-xl ml-10 ">Sunset: {sunset}</p>
                     <p ref={(el) => (textRefs.current[10] = el)} className="text-xl ml-10 ">Timezone: {timezoneString}</p>
