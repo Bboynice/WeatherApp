@@ -134,7 +134,4 @@ docker run -p 4173:4173 --env VITE_WEATHER_API_KEY=... weather-io
 - Unit toggle (°C ⇄ °F) and wind speed preferences
 - Automated visual regression tests
 
-## License
-
-No license specified yet. Add one (e.g., MIT) before publishing publicly.
 
